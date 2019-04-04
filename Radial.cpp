@@ -19,7 +19,7 @@ bool isMousePressed = false;
 
 //tool states
 bool isPenToolActive = true;
-bool isKaleidoscope = false;
+bool isKaleidoscope = true;
 int symmetryLines = 30;
 bool doubleSymmetry = true;
 
@@ -56,8 +56,8 @@ void ColorSelectorMenu(int);
 
 //Drawing Algorithms
 void DrawLine(int x1, int y1, int x2, int y2);
-void DrawCircle(int h, int k, int radius);
-double CalculateEpsilon(int r);
+//void DrawCircle(int h, int k, int radius);
+//double CalculateEpsilon(int r);
 //void FillColor(int x, int y);
 
 int main(int argc, char *argv[])
