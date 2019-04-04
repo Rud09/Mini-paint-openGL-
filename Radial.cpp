@@ -22,7 +22,7 @@ bool isPenToolActive = true;
 bool isKaleidoscope = true;
 int symmetryLines = 30;
 bool doubleSymmetry = true;
-
+bool isRandom=false;
 //Window_display
 void InitWindow();
 void display(void);
@@ -115,6 +115,7 @@ void CreateMyMenu() //-----MENU-----
 	glutAddMenuEntry("DEEP_PINK", 8);
 	glutAddMenuEntry("LAWNGREEN", 9);
 	glutAddMenuEntry("AQUAMARINE", 10);
+	glutAddMenuEntry("DYNAMIC RANDOM",11);
 
 	//Creating Main Menu
 	glutCreateMenu(MainMenu); //Tool_selctor_tool
@@ -354,34 +355,46 @@ void ColorSelectorMenu(int choice) //-----ColorSelector-----
 	{
 	case 1: //RED
 		SetColor(255, 0, 0);
+		isRandom=false;
 		break;
 	case 2: //BLUE
 		SetColor(0, 0, 255);
+		isRandom=false;
 		break;
 	case 3: //BLACK
 		SetColor(0, 0, 0);
+		isRandom=false;
 		break;
 	case 4: //WHITE
 		SetColor(255, 255, 255);
+		isRandom=false;
 		break;
 	case 5: //YELLOW
 		SetColor(255, 255, 0);
+		isRandom=false;
 		break;
 	case 6: //GREEN
 		SetColor(0, 128, 0);
+		isRandom=false;
 		break;
 	case 7: //SPRINGGREEN
 		SetColor(0, 255, 127);
+		isRandom=false;
 		break;
 	case 8: //DEEPPINK
 		SetColor(255, 20, 147);
+		isRandom=false;
 		break;
 	case 9: //LAWNGREEN
 		SetColor(124, 252, 0);
+		isRandom=false;
 		break;
 	case 10: //AQUAMARINE
 		SetColor(127, 255, 212);
+		isRandom=false;
 		break;
+	case 11:
+			isRandom=true;
 	}
 }
 
@@ -389,7 +402,8 @@ void ColorSelectorMenu(int choice) //-----ColorSelector-----
 
 void DrawLine(int x1, int y1, int x2, int y2) //-----DDA-----
 {
-	/*double dx = x2 - x1,
+	srand(time(0));
+	double dx = x2 - x1,
 		   dy = y2 - y1;
 	int step = max(abs(dx), abs(dy));
 	double xinc = dx / step,
@@ -400,13 +414,22 @@ void DrawLine(int x1, int y1, int x2, int y2) //-----DDA-----
 	{
 		x += xinc;
 		y += yinc;
+		if(isRandom)
+			glColor3ub(rand()%255,rand()%255,rand()%255);;
+		glPointSize(2.5);
 		glBegin(GL_POINTS);
 		glVertex2f(x, y);
 		glEnd();
-	}*/
+	}
+	/*if(isRandom)
+		{
+			//cout<<"lol";
+			glPointSize(3.0);
+			glColor3ub( rand()%255, rand()%255, rand()%255 );;
+		}
 	glLineWidth(3.0);
 	glBegin(GL_LINES);
 	glVertex2i(x1,y1);
 	glVertex2i(x2,y2);
-	glEnd();
+	glEnd();*/
 }
