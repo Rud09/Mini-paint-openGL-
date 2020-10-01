@@ -308,7 +308,7 @@ void RecordPoints(int x, int y)							 	//-----RECORD_POINTS-----
 	{
 		x1 = x;
 		y1 = y;
-		count++;
+		count++;  //increment count
 	}
 	else//record second point
 	{
@@ -342,7 +342,7 @@ void RecordPoints(int x, int y)							 	//-----RECORD_POINTS-----
 		}
 	}
 
-	glFlush();
+	glFlush();    //flushing all the buffers
 }
 
 //===========================ANSILARRY_DRAWING==============================
@@ -373,11 +373,11 @@ void SnapLine(int x1, int y1, int x2, int y2)
 
 	if (dx > dy)//snap horizontally
 	{
-		DrawLine(x1, y1, x2, y1);
+		DrawLine(x1, y1, x2, y1);     //calling drwaline
 	}
 	else       //snap vertically
 	{
-		DrawLine(x1, y1, x1, y2);
+		DrawLine(x1, y1, x1, y2);    //calling drawline
 	}
 }
 
